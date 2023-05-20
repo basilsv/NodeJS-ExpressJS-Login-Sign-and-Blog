@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcryptjs';
 
 const Schema = mongoose.Schema;
 
@@ -18,7 +17,14 @@ const userSchema = new Schema({
         type:String,
         required:true,
         minimumlength: 6
-    }
+    },
+    blogs: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref:"Blog",
+            required:true
+        }
+    ]
 });
 
 export default mongoose.model("User",userSchema);
